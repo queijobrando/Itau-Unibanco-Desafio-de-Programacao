@@ -4,6 +4,9 @@ import com.example.demo.dto.EstatisticaDto;
 import com.example.demo.dto.TransacaoDto;
 import com.example.demo.model.Transacao;
 import com.example.demo.service.TransacaoService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -19,6 +22,12 @@ public class TransacaoController implements GenericController {
         this.transacaoService = transacaoService;
     }
 
+    @Operation(summary = "Enviar Transação", description = "Endpoint responsável por receber e salvar transações", tags = "Gerenciar Transações")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "201", description = "Transação enviada com sucesso"),
+            @ApiResponse(responseCode = "422", description = "A transação não foi aceita por qualquer motivo"),
+            @ApiResponse(responseCode = "400", description = "A API não compreendeu a requisição do cliente")
+    })
     @PostMapping("/transacao")
     public ResponseEntity<Void> enviarTransacao(@Valid @RequestBody TransacaoDto dto){
         try {
@@ -32,11 +41,19 @@ public class TransacaoController implements GenericController {
         }
     }
 
+    @Operation(summary = "Calcular Estatisticas", description = "Endpoint responsável por retornar  estatísticas das transações que aconteceram nos últimos 60 segundos", tags = "Estatísticas")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Dados calculados e exibidos com sucesso")
+    })
     @GetMapping("/estatistica")
     public ResponseEntity<EstatisticaDto> retornarEstatisticas(){
         return ResponseEntity.ok(transacaoService.retornarEstatisticas());
     }
 
+    @Operation(summary = "Deletar Transações", description = "Endpoint responsável por deletar todas as transações salvas", tags = "Gerenciar Transações")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Todas as transações foram apagadas com sucesso"),
+    })
     @DeleteMapping("/transacao")
     public ResponseEntity<Void> deletarTransacoes(){
         transacaoService.deletarTransacoes();

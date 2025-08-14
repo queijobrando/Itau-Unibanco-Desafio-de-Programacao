@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: Itau-Unibanco-Desafio-de-Programacao
+management:
+  server:
+    port: 8081
+  endpoints:
+    web:
+      exposure:
+        include: health, info, metrics
