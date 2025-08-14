@@ -16,6 +16,10 @@ public class TransacaoRepository {
         listaDeTransacoes.add(transacao);
     }
 
+    public void deletarTudo(){
+        listaDeTransacoes.clear();
+    }
+
     public List<Double> retornarValores(){
         OffsetDateTime umMinutoAtras = OffsetDateTime.now().minusSeconds(60);
         List<Double> valores = new ArrayList<>();

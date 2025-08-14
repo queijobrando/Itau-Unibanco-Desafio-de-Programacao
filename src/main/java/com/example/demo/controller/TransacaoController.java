@@ -6,10 +6,7 @@ import com.example.demo.model.Transacao;
 import com.example.demo.service.TransacaoService;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
 
@@ -38,6 +35,12 @@ public class TransacaoController implements GenericController {
     @GetMapping("/estatistica")
     public ResponseEntity<EstatisticaDto> retornarEstatisticas(){
         return ResponseEntity.ok(transacaoService.retornarEstatisticas());
+    }
+
+    @DeleteMapping("/transacao")
+    public ResponseEntity<Void> deletarTransacoes(){
+        transacaoService.deletarTransacoes();
+        return ResponseEntity.ok().build();
     }
 
 }

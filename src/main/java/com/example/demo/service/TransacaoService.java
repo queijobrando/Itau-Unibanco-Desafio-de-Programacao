@@ -30,6 +30,10 @@ public class TransacaoService {
         return transacao;
     }
 
+    public void deletarTransacoes(){
+        transacaoRepository.deletarTudo();
+    }
+
     public EstatisticaDto retornarEstatisticas(){
         List<Double> valores = transacaoRepository.retornarValores();
         if (valores.isEmpty()){
