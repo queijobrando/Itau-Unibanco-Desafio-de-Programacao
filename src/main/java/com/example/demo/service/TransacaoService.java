@@ -6,7 +6,6 @@ import com.example.demo.model.Transacao;
 import com.example.demo.repository.TransacaoRepository;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
 import java.time.OffsetDateTime;
 import java.util.DoubleSummaryStatistics;
 import java.util.List;

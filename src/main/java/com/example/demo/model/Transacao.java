@@ -4,7 +4,6 @@ import com.example.demo.dto.TransacaoDto;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 
-import java.time.LocalDateTime;
 import java.time.OffsetDateTime;
 import java.util.UUID;
 
