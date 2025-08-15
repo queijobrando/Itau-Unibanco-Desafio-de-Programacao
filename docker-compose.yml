@@ -1,5 +1,0 @@
-services:
-
-  desafio:
-    build: .
-    container_name: desafio-itau
