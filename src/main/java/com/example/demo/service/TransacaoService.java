@@ -39,8 +39,8 @@ public class TransacaoService {
         log.info("Transações deletadas com sucesso");
     }
 
-    public EstatisticaDto retornarEstatisticas(){
-        List<Double> valores = transacaoRepository.retornarValores();
+    public EstatisticaDto retornarEstatisticas(String segundos){
+        List<Double> valores = transacaoRepository.retornarValores(segundos);
         if (valores.isEmpty()){
             log.info("Estatisticas calculadas com sucesso");
             return new EstatisticaDto(0, 0.0, 0.0, 0.0, 0.0);

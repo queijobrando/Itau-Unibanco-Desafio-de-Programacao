@@ -14,7 +14,6 @@ class TransacaoServiceTest {
 
     @Test
     void shouldThrowIllegalArgumentExceptionWhenDateTimeIsAfterNow() {
-
         TransacaoRepository repository = mock(TransacaoRepository.class);
         TransacaoService service = new TransacaoService(repository);
 

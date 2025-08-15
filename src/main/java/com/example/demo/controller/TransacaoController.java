@@ -46,8 +46,8 @@ public class TransacaoController implements GenericController {
             @ApiResponse(responseCode = "200", description = "Dados calculados e exibidos com sucesso")
     })
     @GetMapping("/estatistica")
-    public ResponseEntity<EstatisticaDto> retornarEstatisticas(){
-        return ResponseEntity.ok(transacaoService.retornarEstatisticas());
+    public ResponseEntity<EstatisticaDto> retornarEstatisticas(@RequestParam(defaultValue = "60") String segundos){
+        return ResponseEntity.ok(transacaoService.retornarEstatisticas(segundos));
     }
 
     @Operation(summary = "Deletar Transações", description = "Endpoint responsável por deletar todas as transações salvas", tags = "Gerenciar Transações")
